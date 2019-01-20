@@ -7,11 +7,24 @@
   <script src="https://d3js.org/d3-fetch.v1.min.js"></script>
 </head>
 <body>
-  <h1>Patrick Capps</h1>
-  <h2>Visualization 1</h2>
-  <div id="vis1"></div>
-  <h2>Visualization 2</h2>
-  <div id="vis2"><p>here i am</p></div>
+  <h1>D3 Diffusion Tensor Imaging Data Visualization by Patrick Capps</h1>
+  <div id="vis1">
+    <h2>Visualization 1</h2>
+    <p>
+      Here the DTI data is mapped to circle radii on a grid. Values range from
+      0 to 1, and are multiplied by 10 to get the circle radius.<br> Shape and color
+      are uniform while size is used to represent value.
+    </p>
+  </div>
+  <div id="vis2">
+    <h2>Visualization 2</h2>
+    <p>
+      This visualization instead uses color to represent the data instead
+      of size. Rectangles of equal size on a grid are colored based on the data,
+      <br>which is divided into ranges of 0.1 and ten colors are used, ranging
+      generally from blue for low values to red for high values.
+    </p>
+  </div>
   <script src="vis1.js" type="text/javascript"></script>
 </body>
 </html>

@@ -3,8 +3,10 @@ delimiter = ' ';
 A = importdata(file, delimiter, 0);
 B = A(25:155,25:185);
 contour(B, 25)
+title('Diffusion Tensor Imaging Contour Map')
 colormap hot
-%print('Vis1','-dpdf')
+colorbar
+%print('-bestfit', 'Vis1', '-dpdf')
 
 sz = size(B);
 X = [];
@@ -21,3 +23,5 @@ for i = 1:sz(1)
 end
 figure
 scatter3(X, Y, Z)
+title('Diffusion Tensor Imaging 3D Scatter Plot')
+%print('-bestfit', 'Vis2', '-dpdf')

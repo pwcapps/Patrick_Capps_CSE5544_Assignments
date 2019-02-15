@@ -1,0 +1,21 @@
+Our design is the "timeline" of patient symptoms relative to the date of their
+1st TBI. The tasks we hoped to achieve with this visualization were to compare
+frequencies of symptoms before and after the TBI, possibly detecting trends in
+the symptoms, and also to compare symptoms by age of the patient. The visualization
+aligns patients' TBI encounters in the middle of the visualization, highlighting
+symptoms at encounters on each patients' timeline on the x-axis. The symptoms
+have their own unique indicator, so this allows the user to get an idea or even
+count the frequency of symptoms. The second task is achieved with age group color
+coding for each patient's timeline.
+
+We expect that the entire visualization could be viewed on a 24-inch monitor in
+order to get an overview of the data presented. Since there are ~40 patients and
+symptoms are fairly rare, this seems feasible. We planned for the visualization
+to have interaction to filter by symptom or age group to obtain more detailed
+information, and temporal changes should be easily recognized on a timeline.
+
+Compared to some other designs such as the percentage graphs, this visualization
+could be cluttered with every symptom represented by its own glyph. However, not
+every encounter has a symptom present, and it is usually one symptom per encounter,
+so I expect it would remain readable. If the glyphs and color are used well in
+this visualization I think it would also be visually pleasing.

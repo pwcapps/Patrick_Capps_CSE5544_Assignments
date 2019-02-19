@@ -20,6 +20,13 @@ svg1.selectAll("circle")
 var numPatients = 42;
 var width = 800, height = 800;
 
+d3.csv("EHRdataSampleClipped.csv").then(function(data) {
+  svg.selectAll("rect")
+    .data()
+    .enter()
+    .append("rect")
+    .attr("x", )
+})
 
 // Generate svg with y-axis in middle to mark TBI location
 var svg = d3.select("body")

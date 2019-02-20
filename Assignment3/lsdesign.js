@@ -2,6 +2,7 @@ d3.select("body").style("background-color", "gray");
 
 // D3 Color scale
 var c20c = d3.scale.category20c();
+c20c.domain(d3.range(20));
 
 var numPatients = 42;
 var width = window.innerWidth, height = window.innerHeight;
@@ -9,12 +10,12 @@ var barY = height;
 
 d3.csv("ehrDataClipSorted.csv", function(data) {
   var id = patients[data.PatientID].num;
-  console.log(id);
   var tbi = +data.Days_From1stTBI;
   var symptom = 0;
-  for (i = 2; i < data.length; i++) {
-    if (data[i] == "1") {
-      symptom = i - 1;
+  var vals = Object.values(data);
+  for (i = 2; i < vals.length; i++) {
+    if (vals[i] == 1) {
+      symptom = i - 2;
     }
   }
   return {
@@ -24,18 +25,23 @@ d3.csv("ehrDataClipSorted.csv", function(data) {
   };
 
 }).then(function(data) {
-  console.log(data);
-  console.log(data[0].id);
   svg.selectAll("rect")
     .data(data)
     .enter()
     .append("rect")
-    .attr("x", width / 2)
-    .attr("y", function(d) { return d.id * 10 })
-    .attr("width", 10)
-    .attr("height", 10)
-    .style("fill", c20c[2]);
-})
+    .attr("x", function(d) { return width / 2 + d.tbi / 4 })
+    .attr("y", function(d) { return d.id * 22 })
+    .attr("width", 5)
+    .attr("height", 12)
+    .style("fill", function(d) {
+      if (d.symptom == 0) {
+        return c20c(18);
+      }
+      else {
+        return c20c(d.symptom)
+      }
+    });
+});
 
 // Generate svg with y-axis in middle to mark TBI location
 var svg = d3.select("body")

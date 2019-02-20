@@ -8,33 +8,32 @@ var width = window.innerWidth, height = window.innerHeight;
 var barY = height;
 
 d3.csv("ehrDataClipSorted.csv", function(data) {
+  var id = patients[data.PatientID].num;
+  console.log(id);
+  var tbi = +data.Days_From1stTBI;
+  var symptom = 0;
+  for (i = 2; i < data.length; i++) {
+    if (data[i] == "1") {
+      symptom = i - 1;
+    }
+  }
   return {
-    id: +data.PatientID,
-    tbi: +data.Days_From1stTBI,
-    stress: +data.Stress,
-    ptsd: +data.PTSD,
-    speech: +data.Speech,
-    anx: +data.Anxiety,
-    depression: +data.Depression,
-    headache: +data.Headache,
-    sleep: +data.Sleep,
-    aud: +data.Audiology,
-    vis: +data.Vision,
-    neuro: +data.Neurologic,
-    alz: +data.Alzheimer,
-    cog: +data.Cognitive,
-    pcs: +data.PCS,
-    endo: +data.Endocrine,
-    skull: +data.Skull_inj,
-    nonsk: +data.NON_skull_inj
+    id: id,
+    tbi: tbi,
+    symptom: symptom
   };
+
 }).then(function(data) {
   console.log(data);
-  svg.append("rect")
-    .attr("x", data.tbi / 10)
-    .attr("y", data.id - 382200)
-    .attr("width", 0.5)
-    .attr("height", 1)
+  console.log(data[0].id);
+  svg.selectAll("rect")
+    .data(data)
+    .enter()
+    .append("rect")
+    .attr("x", width / 2)
+    .attr("y", data.id * 2)
+    .attr("width", 10)
+    .attr("height", 10)
     .style("fill", c20c[2]);
 })
 
@@ -55,43 +54,47 @@ svg.append("line")
 var patients = {
   382268: {num: 1},
   382269: {num: 2},
-  3822046: {num: 1},
-  3822077: {num: 1},
-  3822084: {num: 1},
-  3822102: {num: 1},
-  3822108: {num: 1},
-  3822163: {num: 1},
-  3822164: {num: 1},
-  3822201: {num: 1},
-  3822204: {num: 1},
-  3822241: {num: 1},
-  3822263: {num: 1},
-  3822264: {num: 1},
-  3822268: {num: 1},
-  3822280: {num: 1},
-  3822286: {num: 1},
-  3822317: {num: 1},
-  3822333: {num: 1},
-  3822355: {num: 1},
-  3822364: {num: 1},
-  3822416: {num: 1},
-  3822432: {num: 1},
-  3822438: {num: 1},
-  3822453: {num: 1},
-  3822530: {num: 1},
-  3822536: {num: 1},
-  3822546: {num: 1},
-  3822599: {num: 1},
-  3822611: {num: 1},
-  3822646: {num: 1},
-  3822663: {num: 1},
-  3822668: {num: 1},
-  3822670: {num: 1},
-  3822740: {num: 1},
-  3822762: {num: 1},
-  3822763: {num: 1},
-  3822767: {num: 1},
-  3822794: {num: 1},
-  3822871: {num: 1},
-  3822986: {num: 1},
+  3822046: {num: 3},
+  3822077: {num: 4},
+  3822084: {num: 5},
+  3822102: {num: 6},
+  3822108: {num: 7},
+  3822163: {num: 8},
+  3822164: {num: 9},
+  3822201: {num: 10},
+  3822204: {num: 11},
+  3822241: {num: 12},
+  3822263: {num: 13},
+  3822264: {num: 14},
+  3822268: {num: 15},
+  3822280: {num: 16},
+  3822286: {num: 17},
+  3822317: {num: 18},
+  3822333: {num: 19},
+  3822355: {num: 20},
+  3822364: {num: 20},
+  3822416: {num: 22},
+  3822432: {num: 23},
+  3822438: {num: 24},
+  3822453: {num: 25},
+  3822530: {num: 26},
+  3822536: {num: 27},
+  3822546: {num: 28},
+  3822599: {num: 29},
+  3822611: {num: 30},
+  3822646: {num: 31},
+  3822663: {num: 32},
+  3822668: {num: 33},
+  3822670: {num: 34},
+  3822740: {num: 35},
+  3822762: {num: 36},
+  3822763: {num: 37},
+  3822767: {num: 38},
+  3822794: {num: 39},
+  3822871: {num: 40},
+  3822986: {num: 41},
+}
+
+var parseData = function(data) {
+
 }

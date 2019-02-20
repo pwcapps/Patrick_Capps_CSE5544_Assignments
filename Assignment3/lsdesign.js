@@ -94,7 +94,3 @@ var patients = {
   3822871: {num: 40},
   3822986: {num: 41},
 }
-
-var parseData = function(data) {
-
-}

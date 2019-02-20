@@ -31,7 +31,7 @@ d3.csv("ehrDataClipSorted.csv", function(data) {
     .enter()
     .append("rect")
     .attr("x", width / 2)
-    .attr("y", data.id * 2)
+    .attr("y", function(d) { return d.id * 10 })
     .attr("width", 10)
     .attr("height", 10)
     .style("fill", c20c[2]);

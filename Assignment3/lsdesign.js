@@ -29,7 +29,7 @@ var patients = {
   3822317: {num: 18},
   3822333: {num: 19},
   3822355: {num: 20},
-  3822364: {num: 20},
+  3822364: {num: 21},
   3822416: {num: 22},
   3822432: {num: 23},
   3822438: {num: 24},
@@ -63,7 +63,8 @@ d3.csv("ehrDataClipSorted.csv", function(data) {
   var vals = Object.values(data);
   for (i = 2; i < vals.length; i++) {
     if (vals[i] == 1) {
-      symptom = i - 2;
+      symptom = i - 1;
+      break;
     }
   }
   return {
@@ -71,8 +72,8 @@ d3.csv("ehrDataClipSorted.csv", function(data) {
     tbi: tbi,
     symptom: symptom
   };
-
 }).then(function(data) {
+  console.log(data);
   svg.selectAll("rect")
     .data(data)
     .enter()
@@ -107,13 +108,28 @@ svg.append("line")
 
 // Generate legend:
 svg.selectAll("text")
-  .data(d3.range(20))
+  .data(d3.range(16))
   .enter()
   .append("text")
   .attr("x", 10)
-  .attr("y", d3.scale.linear().domain([-1, 20]).range([0, 400]))
+  .attr("y", d3.scale.linear().domain([-1, 16]).range([0, 400]))
   .attr("fill", c20c);
 
 svg.selectAll("text")
   .data(symptoms)
   .text(function(d) { return d });
+
+svg.append("text")
+  .attr("x", width / 2 - 30)
+  .attr("y", 20)
+  .text("TBI");
+
+svg.append("text")
+  .attr("x", 150)
+  .attr("y", 20)
+  .text("Encounters before TBI");
+
+svg.append("text")
+  .attr("x", width - 550)
+  .attr("y", 20)
+  .text("Encounters after TBI");

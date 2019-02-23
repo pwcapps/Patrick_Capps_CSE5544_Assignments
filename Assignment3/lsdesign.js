@@ -65,7 +65,7 @@ d3.csv("EHRdata.csv", function(data) {
   };
 }).then(function(data) {
   console.log(data);
-  svg.selectAll("rect")
+  svg.selectAll("rect.symptom")
     .data(data)
     .enter()
     .append("rect")
@@ -73,7 +73,8 @@ d3.csv("EHRdata.csv", function(data) {
     .attr("y", function(d) { return d.id * yPosScale })
     .attr("width", rectWidth)
     .attr("height", rectHeight)
-    .style("fill", function(d) { return c20c(d.symptom) });
+    .style("fill", function(d) { return c20c(d.symptom) })
+    .classed("symptom");
 });
 
 console.log(patients);
@@ -126,3 +127,8 @@ svg.append("text")
   .attr("x", width - 550)
   .attr("y", 20)
   .text("Encounters after TBI");
+
+svg.append("text")
+  .style("font-size", "36px")
+  .attr("transform", "translate(200, 500) rotate(-90)")
+  .text("Patients");

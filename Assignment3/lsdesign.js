@@ -41,7 +41,8 @@ d3.csv("EHRdata.csv", function(data) {
       .attr("y", patientCount * yPosScale)
       .attr("width", (post - pre) / xPosScale)
       .attr("height", rectHeight)
-      .style("fill", c20c(19));
+      .style("fill", c20c(19))
+      .style("opacity", 0.5);
     id = patientCount;
     patientCount++;
   }
@@ -74,6 +75,13 @@ d3.csv("EHRdata.csv", function(data) {
     .attr("width", rectWidth)
     .attr("height", rectHeight)
     .style("fill", function(d) { return c20c(d.symptom) })
+    .style("opacity", function(d) {
+      if (d.tbi < 0) {
+        return 0.3;
+      } else {
+        return 1;
+      }
+    })
     .classed("symptom");
 });
 

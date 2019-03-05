@@ -1,6 +1,6 @@
 smalldata = 'data/smalldata.csv';
 bigdata = 'data/bigdata.csv';
-vecData = csvread(bigdata);
+vecData = csvread(smalldata);
 u = vecData(:,1);
 v = vecData(:,2);
 x = vecData(:,3);

@@ -1,0 +1,25 @@
+When using all of the data points (bigplot), the vector field is extremely dense and little
+information can be gained, except that magnitudes are large in the center and
+bottom corner.
+
+Sampling the data (smallplot) allows the plot to clearly show magnitudes of the vectors.
+Magnitudes are near zero in a curve from the region of (0.5, 1) to the region of
+(0, 1) and the flow in the surrounding area is away from this curve and gets stronger
+further away. We can also see another zero point near (0.7, -0.5).
+
+By taking more samples (mediumplot), the vector field starts to look like columns, where flow
+is strong in one direction at some point in the column, but reverse direction as
+you move along the column.
+
+Increasing the vector size (largevecs) gives an exaggerated view of the flow in
+the vector field. The vectors curve more strongly since there is more interpolation,
+and overlap somewhat to give a clear idea of overall direction. Smaller vectors
+(smallvecs) make it easier to see near zero points since the vectors essentially
+become points with a smaller scale.
+
+Since the data in this case is very dense, I think the highly sampled plot with
+increased vector size makes it easiest to see the features of the data, since it
+is not cluttered with too many points, and the large curving vectors clearly show
+flow. Using all of the data is too hard to read, and using twice as many points
+does not reveal much more information. I also find that decreasing vector scale
+makes it difficult to see the overall pattern.
